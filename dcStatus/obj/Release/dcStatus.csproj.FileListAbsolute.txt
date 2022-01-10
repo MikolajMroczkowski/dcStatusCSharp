@@ -1,0 +1,9 @@
+/home/miki/RiderProjects/dcStatus/dcStatus/bin/Release/dcStatus.exe
+/home/miki/RiderProjects/dcStatus/dcStatus/bin/Release/dcStatus.pdb
+/home/miki/RiderProjects/dcStatus/dcStatus/bin/Release/Newtonsoft.Json.dll
+/home/miki/RiderProjects/dcStatus/dcStatus/bin/Release/Newtonsoft.Json.xml
+/home/miki/RiderProjects/dcStatus/dcStatus/obj/Release/dcStatus.csprojAssemblyReference.cache
+/home/miki/RiderProjects/dcStatus/dcStatus/obj/Release/dcStatus.csproj.CoreCompileInputs.cache
+/home/miki/RiderProjects/dcStatus/dcStatus/obj/Release/dcStatus.csproj.CopyComplete
+/home/miki/RiderProjects/dcStatus/dcStatus/obj/Release/dcStatus.exe
+/home/miki/RiderProjects/dcStatus/dcStatus/obj/Release/dcStatus.pdb

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.IO;
+using System.Threading;
 using Newtonsoft.Json;
 
 namespace dcStatus
@@ -10,7 +11,31 @@ namespace dcStatus
     {
         public static void Main(string[] args)
         {
-            DataPatern status = new DataPatern();
+            var config = new Config();
+            fullStatusPatern statusy = new fullStatusPatern();
+            using (var sr = new StreamReader("config.json"))
+            {
+                string content = sr.ReadToEnd();
+                config = JsonConvert.DeserializeObject<Config>(content);
+            }
+            using (var sr = new StreamReader("messages.json"))
+            {
+                string content = sr.ReadToEnd();
+                statusy = JsonConvert.DeserializeObject<fullStatusPatern>(content);
+            }
+            Console.WriteLine(config.token);
+            while (true)
+            {
+                foreach (var obj in statusy.messages)
+                {
+                    fullDataPatern fullData = new fullDataPatern();
+                    fullData.custom_status.emoji_name = obj.emoji;
+                    fullData.custom_status.text = obj.message;
+                    Console.WriteLine(ChangeStatus(config.token, fullData));
+                    Thread.Sleep(obj.time);
+                }
+            }
+
         }
 
         public static string ChangeStatus(string token, fullDataPatern statusData)
@@ -35,19 +60,36 @@ namespace dcStatus
                 var result = streamReader.ReadToEnd();
             }
 
-            return httpResponse.StatusCode.ToString();
+            return data.ToString();
         }
         
     }
 
     class fullDataPatern
     {
-        public List<DataPatern> custom_status;
+        public DataPatern custom_status = new DataPatern();
     }
     class DataPatern
     {
-        public string emoji;
-        public string status;
+        public string emoji_name;
+        public string text;
 
+    }
+
+    class Config
+    {
+        public string token;
+    }
+
+    class StatusPatern
+    {
+        public string emoji;
+        public string message;
+        public int time;
+    }
+
+    class fullStatusPatern
+    {
+        public List<StatusPatern> messages;
     }
 }

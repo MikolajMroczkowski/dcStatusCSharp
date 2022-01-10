@@ -1,0 +1,14 @@
+{
+  "messages": [
+    {
+      "emoji": "😀",
+      "message": "Hej, Jestem Mikołaj",
+      "time": 4000
+    },
+    {
+      "emoji": "⚪",
+      "message": "Skrypt napisany w C#",
+      "time": 3000
+    }
+  ]
+}
